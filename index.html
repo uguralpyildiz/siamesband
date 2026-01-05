@@ -88,7 +88,7 @@
 
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-title">LOADING ASSETS</div>
+            <div class="loader-title"><img src="SiamesLogo.webp" alt="logo" style="max-width: 100%;"></div>
             <div class="loader-track">
                 <div id="loader-bar"></div>
             </div>
@@ -110,33 +110,177 @@
         <div class="nav-mobile-btn hover-trigger">///</div>
     </nav>
 
-    <section id="hero-section" class="hover-trigger" onclick="startGame()">
-        
+    <div class="bg-fixed"></div>
+    <style>
+        .siames-hero-wrapper {
+            height: 100vh;
+            width: 100%;
+      
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
     
-        <div class="hero-content parallax-layer" data-speed="0.02">
-        
-            <p class="hero-subtitle" id="start-txt">[ SCROLL DOWN TO START ]</p>
+        /* Zorunlu Border Radius 0 kuralı */
+        .siames-hero-wrapper *,
+        .siames-hero-wrapper {
+            border-radius: 0 !important;
+        }
+    
+        .siames-grain {
+            position: absolute;
+            inset: 0;
+           
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1;
+        }
+    
+        .siames-container {
+            z-index: 10;
+            text-align: center;
+        }
+    
+        .siames-title {
+            font-family: 'Arial Black', sans-serif;
+            /* HUD fontun varsa onu kullan */
+            font-size: clamp(3rem, 12vw, 9rem);
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 50px #ffffff50;
+        }
+    
+        .siames-line {
+            display: block;
+            opacity: 0;
+        }
+    
+        .siames-accent {
+            color: #FF003F;
+            text-shadow: 0 0 50px #FF003F50;
+            font-weight: 600;
+            font-size: 4rem;
+        }
+    
+        .siames-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: #666;
+            opacity: 0;
+            margin-bottom: 60px;
+        }
+    
+        /* Scroll To Down Butonu Stili */
+        .siames-scroll-trigger {
+            cursor: pointer;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    
+        .siames-scroll-text {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #fff;
+            font-weight: bold;
+        }
+    
+        .siames-scroll-line {
+            width: 1px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .siames-scroll-dot {
+            width: 1px;
+            height: 30%;
+            background: #FF003F;
+            position: absolute;
+            top: -100%;
+            left: 0;
+        }
+    </style>
+    
+    
+    <section id="siames-hero" class="siames-hero-wrapper">
+        <div class="siames-grain"></div>
+    
+        <div class="siames-container hover-trigger">
+            <div class="siames-content-box">
+                <h1 class="siames-title">
+               
+                    <p class="hero-subtitle" id="start-txt">[ SCROLL TO BEGIN ]</p>
+                </h1>
+    
+                
+                
+            </div>
         </div>
-    
-
     </section>
 
+    <script>
+        window.addEventListener('load', () => {
+                const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
+                // Başlıkların gelişi
+                tl.fromTo(".siames-line",
+                    { y: 100, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.5, stagger: 0.2 }
+                );
+
+                // Tagline gelişi
+                tl.fromTo(".siames-tagline",
+                    { opacity: 0 },
+                    { opacity: 1, duration: 1 },
+                    "-=0.5"
+                );
+
+                // Scroll butonunun belirmesi
+                tl.fromTo(".siames-scroll-trigger",
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 1 },
+                    "-=0.5"
+                );
+
+             
+
+                // Mouse Hover Efekti: Başlık hafifçe kaysın
+                document.addEventListener("mousemove", (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 250;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 250;
+
+                    gsap.to(".siames-title", {
+                        x: x,
+                        y: y,
+                        duration: 2,
+                        ease: "power2.out"
+                    });
+                });
+            });
+    </script>
     <section id="tunnel-section">
-        
+    
         <div class="tunnel-word">WELCOME TO</div>
         <div class="tunnel-word accent-text"><img src="SiamesLogo.webp" alt="logo" style="max-width: 300px;"></div>
-    
         <div class="tunnel-word">A BAND</div>
         <div class="tunnel-word">BUILT ON</div>
-    
         <div class="tunnel-word">SOUND</div>
         <div class="tunnel-word accent-text">AND VISION</div>
-    
         <div class="tunnel-word ">THIS IS</div>
         <div class="tunnel-word ">WHERE IT</div>
         <div class="tunnel-word accent-text">BEGINS</div>
+    
     </section>
+
 
 
     <section id="about-section">
@@ -203,72 +347,72 @@
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-4.fna.fbcdn.net/v/t51.82787-15/590420341_18442843324102228_4078143392122430864_n.webp?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iIyHwXL2SroQ7kNvwF-nYmL&_nc_oc=AdkddRXOrRQ-G7jaavw4vEyFGnHrC5sTtIw5Ltj04ljcAcYm4FmS75Pi0lwxYjXpvG8&_nc_zt=23&_nc_ht=scontent.fesb4-4.fna&_nc_gid=Sxy88QTGyTZamzStBYIQ5Q&oh=00_AfreNg5V6thKXFxxa8SV2OFMQV9lMV_Sn9BngkUzL_fM0w&oe=6960C245" class="cctv-img">
-            <div class="cctv-overlay">CAM_01 // LIVE</div>
+            <div class="cctv-overlay">CAM_05 // LIVE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-4.fna.fbcdn.net/v/t51.82787-15/590427865_18442843285102228_3867146078638211859_n.webp?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cZ81ngP1jHwQ7kNvwFLN5Xg&_nc_oc=AdkP2HgEkpOA9d4S6owNWHPryxizh0w9RMIt_cOjTvhA9vH2rxRsd_162DWG8lZViOU&_nc_zt=23&_nc_ht=scontent.fesb4-4.fna&_nc_gid=rNKKvo-fuyKAOUs4XxXIBQ&oh=00_Afql5jc82EMxD7BmfFhLnK-mRQF9Ly2dClk0BiTeWHKpSg&oe=6960D643" class="cctv-img">
-            <div class="cctv-overlay">CAM_02 // REC</div>
+            <div class="cctv-overlay">CAM_06 // REC</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb3-1.fna.fbcdn.net/v/t51.82787-15/590403390_18442843198102228_1521637845674336161_n.webp?stp=dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IMjGh4PAtbIQ7kNvwEoZU7q&_nc_oc=AdkiNKC1zk2Y_AJzrQBiJV7NiGQ3ka_l2BJD1SS-UsHBHgX-D6OOrXWdwKdB9mbgXmg&_nc_zt=23&_nc_ht=scontent.fesb3-1.fna&_nc_gid=KWrcQy-_sLWDwqwVskW82g&oh=00_AfoItrEHfk33k_28uMOlDE0G57NVpmCc2PnNA3BuUuuKAQ&oe=6960BF43" class="cctv-img">
-            <div class="cctv-overlay">CAM_03 // ERR</div>
+            <div class="cctv-overlay">CAM_07 // ERR</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-4.fna.fbcdn.net/v/t51.82787-15/598119338_18442843207102228_1726343320948287511_n.webp?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ik_j2Oo81EIQ7kNvwHb4tPQ&_nc_oc=AdlJXlyGZh0PcT9b3Etbk17CBLWuDG6H6rc9tvNa5ncyHs4fXHay9FKhgTsvdUHrYX4&_nc_zt=23&_nc_ht=scontent.fesb4-4.fna&_nc_gid=QjnApLJIR1ffArjJKxOyag&oh=00_AfoUfec860njJhb_EsIcktkeEKxaQykkz89-DpYqKWNmtw&oe=6960D307" class="cctv-img">
-            <div class="cctv-overlay">CAM_04 // OFFLINE</div>
+            <div class="cctv-overlay">CAM_08 // OFFLINE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t51.82787-15/587031246_18440344099102228_7538559562478229535_n.webp?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=XSS7nRxT2XIQ7kNvwEwNy6F&_nc_oc=Adk6za4ZVk1IMVN5lM-VDS4mDZzql2yAni5g_mJ-HdCEdUvmdLRqPnhy6Fi0YtdyjrM&_nc_zt=23&_nc_ht=scontent.fesb4-1.fna&_nc_gid=i1vIpl78iWcBYWTC55ht0A&oh=00_AfoEIZ3PNDIL9C2bxMQg6VJSdj692_qpzboi00P-IfrPQg&oe=6960C56C" class="cctv-img">
-            <div class="cctv-overlay">CAM_01 // LIVE</div>
+            <div class="cctv-overlay">CAM_09 // LIVE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb9-1.fna.fbcdn.net/v/t51.82787-15/587629658_18440344072102228_1833298797666297546_n.webp?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EV3r_xrTy04Q7kNvwE6zdQF&_nc_oc=AdkDT5Y_6JdQz2o2FSaJjSRuwWqPxPVlHX2SVWrjAHQSNQ6iNfA_EL1XTaPDmLlmqoQ&_nc_zt=23&_nc_ht=scontent.fesb9-1.fna&_nc_gid=Z3nVX3ZKP8c5tjG8qGthBQ&oh=00_AfpZRWu15UE4-g6W42jj1eL8gH6t-fnL4R9lkwbIdKPhlg&oe=6960E88C" class="cctv-img">
-            <div class="cctv-overlay">CAM_02 // REC</div>
+            <div class="cctv-overlay">CAM_10 // REC</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t39.30808-6/545597329_1402529997903037_1216890632718391074_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=hs1mawItUKEQ7kNvwHlptZn&_nc_oc=AdlCydHCU3gjQdK3xuQZWATgS4wO3PQpOuvzkqh-CP-KzF3sJYzNl_Bfd51DGF5_QrU&_nc_zt=23&_nc_ht=scontent.fesb3-2.fna&_nc_gid=wHuDb7gZCRglJTdu0dyb-A&oh=00_AfqGBw1sKzX-SQKnDlYkZ17Hz3HjioVyxvyKKZ21JqcsJw&oe=6960D7D1" class="cctv-img">
-            <div class="cctv-overlay">CAM_03 // ERR</div>
+            <div class="cctv-overlay">CAM_11 // ERR</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb9-1.fna.fbcdn.net/v/t39.30808-6/544980191_1402530001236370_6241904039896048575_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=c0qhLVfPyP8Q7kNvwEpW86n&_nc_oc=AdkTgfkIkrB86rJz--bHdS3QjxUo8lNAlZwAtTApVo5I7SAk4ILa_JfJ8PJGLHDvWnk&_nc_zt=23&_nc_ht=scontent.fesb9-1.fna&_nc_gid=r8lkBH3pKoA8PTALQSBssw&oh=00_Afr_U4kEX63fa3n6jmq5S1oPcZ0_qjzbuVuQwMW4Uu5Sbg&oe=6960CABC" class="cctv-img">
-            <div class="cctv-overlay">CAM_04 // OFFLINE</div>
+            <div class="cctv-overlay">CAM_12 // OFFLINE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-2.fna.fbcdn.net/v/t39.30808-6/542759230_1400243974798306_4710061295623347464_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=163N2K6pJ-4Q7kNvwHNaG-j&_nc_oc=AdkghJ0m86wQvMj8wWWZFY431GxKP_JXBO55yl7xdhEQSxJXewuAJYSRCr982OLHmkc&_nc_zt=23&_nc_ht=scontent.fesb4-2.fna&_nc_gid=7BMBDtLyeiPphJrbSZ4mDw&oh=00_AfrzJCJLYurjc4xbDo5d3_MExQ1PfolON5nFxfr-VCFJQw&oe=6960DE4B" class="cctv-img">
-            <div class="cctv-overlay">CAM_03 // ERR</div>
+            <div class="cctv-overlay">CAM_13 // ERR</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t39.30808-6/536088321_1392500248906012_4767540666576407837_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zCdJYq5ZWhkQ7kNvwFwezV5&_nc_oc=AdlOpuzDCqaXhoCkOkCPwjastoB_fOCqsyB1m5BEueVLhBJRjvfXXpKmEhPz6A1OEnc&_nc_zt=23&_nc_ht=scontent.fesb4-1.fna&_nc_gid=IK56EeTEUkRrKxLGp25DWQ&oh=00_AfpdvSwXR0eyyunEWI_6jfRg9rLQeMf60PR9Z1jWv47HiQ&oe=6960DA88" class="cctv-img">
-            <div class="cctv-overlay">CAM_04 // OFFLINE</div>
+            <div class="cctv-overlay">CAM_14 // OFFLINE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t39.30808-6/536275743_1386936742795696_6481534362091431968_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=df2Q0flsWTYQ7kNvwGZsc1z&_nc_oc=AdmOaf21SruPwcQeLYM2ksaM7WCY73KB9363Y_2cSBwXRpjyZnX4EyZEkxyqdsM9o4o&_nc_zt=23&_nc_ht=scontent.fesb3-2.fna&_nc_gid=YMUCBJ3_U7LUcVL4ulplew&oh=00_AfrUBJg79uT_rda3CUw_LNpQWvMhdeLsfwg7bvZabUcpNw&oe=6960D028" class="cctv-img">
-            <div class="cctv-overlay">CAM_03 // ERR</div>
+            <div class="cctv-overlay">CAM_15 // ERR</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb9-1.fna.fbcdn.net/v/t39.30808-6/511195160_1343318490490855_4985749631285085324_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=24xdQr6EvpMQ7kNvwFoLJiO&_nc_oc=Adnblpsqe_J_SdUNHpWhBHHyoQb_YxQY6cGtpkAV26WJmP4z-nDuGGveaflnJ3Eo3C4&_nc_zt=23&_nc_ht=scontent.fesb9-1.fna&_nc_gid=xq9LhrQRvfZupv3RpRXGQA&oh=00_AfpxOJ3M4m9F1ZUVO9gpcZft9eRNZYS-yMGFK-cF1Y3vLA&oe=6960DAAF" class="cctv-img">
-            <div class="cctv-overlay">CAM_04 // OFFLINE</div>
+            <div class="cctv-overlay">CAM_16 // OFFLINE</div>
         </div>
 
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb3-1.fna.fbcdn.net/v/t39.30808-6/499759800_1323422275813810_3884265923278937312_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=3Elda-dxPKUQ7kNvwFVO_gy&_nc_oc=Adkb4LeyHagEFN_6u4IBzAZza7PZtZ_WicO2ZfczWyko3TJkBCitDd8qMGprT-xT5e4&_nc_zt=23&_nc_ht=scontent.fesb3-1.fna&_nc_gid=U_A7eum7-qSk7lHBoIyFFw&oh=00_Afrem9m-cxB1zXnQYST_Gx3OpDGK1-0tiK0gpO5cUO9wqg&oe=6960EB6C"
                 class="cctv-img">
-            <div class="cctv-overlay">CAM_04 // OFFLINE</div>
+            <div class="cctv-overlay">CAM_17 // OFFLINE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb3-1.fna.fbcdn.net/v/t51.75761-15/497500734_18409594312102228_5758195581632184384_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YuryrZ_yVqAQ7kNvwE2Eslw&_nc_oc=AdkpwK5fo88OVt_Qag_8Forn7peCQ46lj6ejNa0YfsEIUWI-CRXtRc-khfxCa_OL4Q0&_nc_zt=23&_nc_ht=scontent.fesb3-1.fna&_nc_gid=O7xTkQ70MKzxp2XvT9ss1w&oh=00_AfoeJvfaPDnN2S6bJETqOakNezcTOKj7Thf7fkZxJmfjVA&oe=6960D12F"
                 class="cctv-img">
-            <div class="cctv-overlay">CAM_01 // LIVE</div>
+            <div class="cctv-overlay">CAM_18 // LIVE</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-5.fna.fbcdn.net/v/t51.75761-15/496670763_18409594276102228_3048586213687795171_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gdmBSVUw7hgQ7kNvwED1fPR&_nc_oc=AdnxBdMX9t5GStybXeKRjvncDry_SvUocg3ysAPJxwTKo6WRXfv__pkkZgKHc5-b8dE&_nc_zt=23&_nc_ht=scontent.fesb4-5.fna&_nc_gid=YWg5yQBDQob7VqrX1Q80Cw&oh=00_Afp5FsP73QoCIn4EvwI_Om1weMcr-VsU4oo8BPXmUjVrYQ&oe=6960C1BB"
                 class="cctv-img">
-            <div class="cctv-overlay">CAM_02 // REC</div>
+            <div class="cctv-overlay">CAM_19 // REC</div>
         </div>
         <div class="archive-item hover-trigger">
             <img src="https://scontent.fesb4-5.fna.fbcdn.net/v/t51.75761-15/497453104_18409594228102228_2687305219795696294_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OsqMnpQVlXAQ7kNvwHyCHXG&_nc_oc=AdkMaUgW3scSxDjEMH3W2_19szQuUAbHcj9WcOMuKJzW8ffAvSPdoior19eFy5ER7ew&_nc_zt=23&_nc_ht=scontent.fesb4-5.fna&_nc_gid=r6FeoFP53cBjoR9wHDzSFw&oh=00_AfpWJ5jbO7cAgLvdHthIfqzspETIDhfr0nl_F-n9QYc2wA&oe=6960E776"
                 class="cctv-img">
-            <div class="cctv-overlay">CAM_03 // ERR</div>
+            <div class="cctv-overlay">CAM_20 // ERR</div>
         </div>
     </div>
 </section>
@@ -289,20 +433,7 @@
 <section id="armory-section" >
     <div class="armory-header" style="position: sticky; top: 0; z-index: 2;">
         <h2>OFFICIAL   <span class="accent-text">MERCH</span></h2>
-        <a href="#shop"
-            class="group relative inline-flex items-center justify-center min-w-[300px] bg-[#FF003F] px-4 py-4 transition-all duration-300 active:scale-95 hover-trigger overflow-hidden">
-        
-            <span
-                class="font-hud text-white text-2xl md:text-3xl font-bold tracking-tighter transition-transform duration-300 group-hover:translate-x-2">
-                VIEW COLLECTION
-            </span>
-        
-           
-        
-            <div
-                class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            </div>
-        </a>
+       
     </div>
 
     <div class="armory-grid">
@@ -387,18 +518,18 @@
     </div>
     <div class="armory-header" style="position: relative;top: 75px;">
         <h2> </h2>
-        <a href="#shop"
-            class="group relative inline-flex items-center justify-center min-w-[300px] bg-[#fff] px-4 py-4 transition-all duration-300 active:scale-95 hover-trigger overflow-hidden">
+        <a href="https://www.siamesmerch.com/" target="_blank"
+            class="group relative inline-flex items-center justify-center min-w-[300px]  px-4 py-4 transition-all duration-300 active:scale-95 hover-trigger overflow-hidden">
     
             <span
-                class="font-hud text-black text-2xl md:text-3xl font-bold tracking-tighter transition-transform duration-300 group-hover:translate-x-2">
+                class="font-hud text-white text-2xl md:text-3xl font-bold tracking-tighter transition-transform duration-300 group-hover:translate-x-2">
                 VIEW FULL COLLECTION
             </span>
     
     
     
             <div
-                class="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
             </div>
         </a>
     </div>
@@ -506,7 +637,7 @@
 
 <section id="missions-section">
     <div class="missions-header">
-        <h2>TOUR </h2>
+        <h2>TOUR <span class="accent-text">DATES</span></h2>
         <div class="system-status">● NOW PLAYING LIVE</div>
     </div>
 
@@ -517,7 +648,7 @@
             data-map="https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             <div class="m-date">24 JAN 2026</div>
             <div class="m-city">NEW YORK</div>
-            <div class="m-status">ACQUIRED</div>
+            <div class="m-status">PENDING</div>
         </div>
         <div class="mission-item hover-trigger"
             data-map="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1000">
@@ -535,7 +666,7 @@
             data-map="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1000">
             <div class="m-date">10 APR 2026</div>
             <div class="m-city">BUENOS AIRES</div>
-            <div class="m-status accent-text">HOMECOMING</div>
+            <div class="m-status accent-text">ACQUIRED</div>
         </div>
     </div>
 </section>
@@ -551,32 +682,37 @@
             <div class="footer-links">
                 <h4>MENU</h4>
                 <a href="#" class="hover-trigger">HOME</a>
-                <a href="#" class="hover-trigger">THE BAND</a>
+                <a href="#" class="hover-trigger">STORY</a>
+                <a href="#" class="hover-trigger">GALLERY</a>
+                <a href="#" class="hover-trigger">LINKS</a>
                 <a href="#" class="hover-trigger">TOUR DATES</a>
             </div>
             <div class="footer-links">
                 <h4>CONNECT</h4>
                 <a href="#" class="hover-trigger">YOUTUBE</a>
-                <a href="#" class="hover-trigger">INSTAGRAM</a>
                 <a href="#" class="hover-trigger">SPOTIFY</a>
+                <a href="#" class="hover-trigger">APPLE MUSIC</a>
+                <a href="#" class="hover-trigger">SOUNDCLOUD</a>
+                <a href="#" class="hover-trigger">INSTAGRAM</a>
+                <a href="#" class="hover-trigger">FACEBOOK</a>
             </div>
         </div>
         <div class="footer-bottom">
             <span>© 2026 SIAMÉS. ALL RIGHTS RESERVED.</span>
-            <span style="color: #fff;">DESIGNED AND PUBLISHED BY JUST FAN &hearts; </span>
+            <span style="color: #fff;">Designed and coded by <span class="accent-text">nv!te</span> </span>
         </div>
     </footer>
     <section id="signal-section" style="background-color: #fff;">
         <div class="signal-wrapper">
             <div class="signal-track">
-                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION :d SORRY FOR BUGS /// </div>
-                <div class="signal-item">SEE YOU LATER :) /// </div>
-                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION :d SORRY /// </div>
-                <div class="signal-item">SEE YOU LATER :) /// </div>
-                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION :d SORRY FOR BUGS /// </div>
-                <div class="signal-item">SEE YOU LATER :) /// </div>
-                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION :d SORRY /// </div>
-                <div class="signal-item">SEE YOU LATER :) /// </div>
+                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION  /// </div>
+                <div class="signal-item">SORRY FOR BUGS /// </div>
+                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION /// </div>
+                <div class="signal-item">SORRY FOR BUGS /// </div>
+                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION  /// </div>
+                <div class="signal-item">SORRY FOR BUGS /// </div>
+                <div class="signal-item">THIS SITE STILL UNDER CONSTRUCTION /// </div>
+                <div class="signal-item">SORRY FOR BUGS /// </div>
                 
                 
             </div>

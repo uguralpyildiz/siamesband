@@ -72,55 +72,8 @@ triggers.forEach(el => {
 // ----------------------------------------------------------------
 
 
-// Mouse Parallax (Hero için)
-const heroSection = document.querySelector("#hero-section");
-const parallaxLayers = document.querySelectorAll(".parallax-layer");
 
-heroSection.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 100;
-    const y = (e.clientY / window.innerHeight - 0.5) * 100;
 
-    parallaxLayers.forEach(layer => {
-        const speed = layer.getAttribute("data-speed");
-        gsap.to(layer, {
-            x: x * speed,
-            y: y * speed,
-            duration: 1,
-            ease: "power2.out"
-        });
-    });
-});
-
-// START GAME FUNCTION (Click Event)
-window.startGame = function () {
-    const startTxt = document.getElementById("start-txt");
-    startTxt.innerText = "SCROLL DOWN...";
-    startTxt.style.color = "#fff";
-
-    const tl = gsap.timeline();
-
-    tl
-        // 1. Video Zoom In (İçine girme hissi)
-        .to(".hero-bg-video", {
-            scale: 2.5,
-            duration: 0.8,
-            ease: "power2.in"
-        })
-        // 2. Beyaz Flash Patlaması
-        .to(".flash-overlay", {
-            opacity: 1,
-            duration: 0.1,
-            yoyo: true,
-            repeat: 3 // Strobe effect
-        })
-        // 3. Tünele Kaydır
-       
-        // 4. Flash Söndür
-        .to(".flash-overlay", {
-            opacity: 0,
-            duration: 0.5
-        });
-};
 
 
 // 5. TUNNEL LOGIC (SCROLL TRIGGER)
@@ -131,7 +84,7 @@ const tunnelTl = gsap.timeline({
         start: "top top",
         end: "+=5000", // Scroll mesafesi (Animasyon süresi)
         pin: true,
-        scrub: 1,
+        scrub: 1.5,
     }
 });
 
@@ -148,7 +101,7 @@ words.forEach((word, i) => {
             opacity: 1,
             filter: "blur(0px)",
             duration: 1,
-            ease: "power1.out"
+            ease: "power2.out"
         }
     )
         .to(word, {
