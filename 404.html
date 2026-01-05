@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | ohshii..</title>
+
+
+    <meta http-equiv="Content-Language" content="en" />
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="preload" href="https://nowifymedia.com/assets/style.css" as="style">
+    <link rel="stylesheet" href="https://nowifymedia.com/assets/style.css">
+    <link rel="stylesheet" href="https://nowifymedia.com/assets/responsive.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
+    <meta charset="UTF-8">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE RESET & SETTINGS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            /* KESİN KURAL: Asla yuvarlak köşe yok */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #030303;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND FX (Screenshottaki puslu hava) --- */
+        .ambient-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: breathe 8s infinite ease-in-out alternate;
+        }
+
+        /* Hafif Grid Dokusu (Teknik hava için) */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes breathe {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Sola yaslı yerine ortalı ama screenshot stili */
+            z-index: 10;
+            padding: 0 10%;
+            text-align: center;
+        }
+
+        /* Badge Stili (Screenshot'taki 'Professional Partner' gibi) */
+        .status-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            font-size: 12px;
+
+            color: #ccc;
+            margin-bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(5px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ff0044;
+            /* Hata kırmızısı */
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(80px, 12vw, 180px);
+            font-weight: 800;
+            /* Extra Bold */
+            line-height: 0.9;
+            letter-spacing: -4px;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #fff 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 16px;
+            color: #888;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+        }
+
+        /* Buton (Screenshot'taki oklu stil) */
+        .btn-agency {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: #fff;
+            color: #000;
+
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #fff;
+        }
+
+        .btn-agency:hover {
+            background: transparent;
+            color: #fff;
+            padding-right: 42px;
+            /* Hoverda ok uzama efekti */
+        }
+
+        .arrow {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-agency:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* --- FOOTER LOGO STRIP (Screenshot'taki alt bant) --- */
+        .clients-strip {
+            width: 100%;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 10;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 80px;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+            opacity: 0.4;
+            /* Screenshot'taki gibi soluk logolar */
+        }
+
+        .client-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 100px;
+            }
+
+            .marquee-content {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-overlay"></div>
+
+
+    <main>
+        <a style="margin-bottom: 15px;" href="/" class="nav-logo">
+            <img width="200px" height="auto" src="SiamesLogo.webp" alt="SiamesLogo.webp">
+           
+        </a>
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            SYSTEM ERROR: SIGNAL LOST
+        </div>
+
+        <h1>404</h1>
+        <h2>Trajectory Unknown</h2>
+
+        <p>
+            The coordinates you are trying to reach do not exist in this sector.
+            The page may have been moved, deleted, or never existed.
+        </p>
+
+        <a href="/" class="btn-agency">
+            Return to Base
+            <span class="arrow">↗</span>
+        </a>
+    </main>
+
+
+</body>
+
+</html>
